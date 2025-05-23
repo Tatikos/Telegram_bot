@@ -494,20 +494,17 @@ class EnhancedAnswerGenerator:
                 logger.error(f"Web search error: {e}")
         
         # 3. Generate answer based on available information
-        try:
-            if self.use_openai:
-                return await self._generate_ai_answer(query, sources_info)
-            
-            # Fallback to Wikipedia if no OpenAI
-            wiki_answer = await self.wikipedia_fallback(query)
-            if wiki_answer:
-                return wiki_answer
-            
-            # Final fallback - simple answer from available sources
-            return await self._generate_simple_answer(query, sources_info, web_results)
-        except Exception as e:
-            logger.error(f"Answer generation error: {e}", exc_info=True)
-            return f"⚠️ I encountered an error while processing your question. Please try again later."
+        # If OpenAI is enabled, use it (uncomment if needed)
+        # if self.use_openai:
+        #     return await self._generate_ai_answer(query, sources_info)
+
+        # Fallback to Wikipedia if no OpenAI or AI fails
+        wiki_answer = await self.wikipedia_fallback(query)
+        if wiki_answer:
+            return wiki_answer
+
+        # Final fallback - simple answer from available sources
+        return await self._generate_simple_answer(query, sources_info, web_results)
 
 
     async def _generate_ai_answer(self, query: str, sources_info: List[Dict[str, Any]]) -> str:
@@ -893,7 +890,6 @@ def main():
     TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
     OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
     DOCUMENTS_PATH = os.getenv('DOCUMENTS_PATH', 'documents')
-    
     print(f"🔍 Checking environment variables...")
     print(f"📱 Telegram token: {'✅ Set' if TELEGRAM_TOKEN else '❌ Missing'}")
     print(f"🤖 OpenAI API key: {'✅ Set' if OPENAI_API_KEY and OPENAI_API_KEY != 'your_openai_api_key_here' else '⚠️ Missing or placeholder'}")
