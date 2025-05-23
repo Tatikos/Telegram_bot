@@ -54,13 +54,13 @@ Document parsing is simplistic.
 Project Structure
 
 Telegram_bot/
-├── bot.py               # Main bot logic (monolithic prototype)
-├── documents/           # Sample storage for uploaded docs
-├── requirements.txt     # Dependencies
-├── .env                 # Environment config
-└── README.md
+  bot.py   # Main bot logic (monolithic prototype)
+  documents/   # Sample storage for uploaded docs
+  requirements.txt   # Dependencies
+  .env   # Environment config
+  README.md
 
-
+  
 License
 
 This project is licensed under the GNU GPL v3.0.
