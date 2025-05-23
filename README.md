@@ -40,9 +40,9 @@ Documents=your_document_directory
 ```bash
 python bot.py
 ```
-```bash
+
 Limitations:
-```
+
 Prototype code; not structured for scalability or security.
 
 No unit tests or input validation.
@@ -50,9 +50,9 @@ No unit tests or input validation.
 API keys and tokens are handled in a basic .env file setup.
 
 Document parsing is simplistic.
-```bash
+
 Project Structure
-```
+
 Telegram_bot/
 ├── bot.py               # Main bot logic (monolithic prototype)
 ├── documents/           # Sample storage for uploaded docs
@@ -60,8 +60,8 @@ Telegram_bot/
 ├── .env                 # Environment config
 └── README.md
 
-```bash
+
 License
-```
+
 This project is licensed under the GNU GPL v3.0.
 This prototype is shared for demonstration and educational purposes. Contributions or suggestions for improving the structure are welcome.
